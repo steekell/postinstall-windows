@@ -1,0 +1,20 @@
+{
+  "schema-version": 1,
+  "applications": [
+    { "id": "create-library-folders", "name": "Créer les dossiers de bibliothèque", "category": "system", "install-method": "script", "script": "src/scripts/configure-system.ps1", "script-action": "create-library-folders", "configurations": ["create-library-folders-default"] },
+    { "id": "hide-desktop-recycle-bin", "name": "Masquer la corbeille du bureau", "category": "system", "install-method": "script", "script": "src/scripts/configure-system.ps1", "script-action": "hide-desktop-recycle-bin", "configurations": ["hide-desktop-recycle-bin-default"] },
+    { "id": "align-desktop-icons-left", "name": "Aligner les icônes à gauche", "category": "system", "install-method": "script", "script": "src/scripts/configure-system.ps1", "script-action": "align-desktop-icons-left", "configurations": ["align-desktop-icons-left-default"] },
+    { "id": "hide-search-box", "name": "Masquer la barre de recherche", "category": "system", "install-method": "script", "script": "src/scripts/configure-system.ps1", "script-action": "hide-search-box", "configurations": ["hide-search-box-default"] },
+    { "id": "hide-task-view", "name": "Masquer la vue des tâches", "category": "system", "install-method": "script", "script": "src/scripts/configure-system.ps1", "script-action": "hide-task-view", "configurations": ["hide-task-view-default"] },
+    { "id": "context-menu", "name": "Configurer le menu contextuel", "category": "system", "install-method": "script", "script": "src/scripts/configure-system.ps1", "script-action": "context-menu", "configurations": ["context-menu-default"] },
+    { "id": "dark-theme", "name": "Activer le thème sombre", "category": "system", "install-method": "script", "script": "src/scripts/configure-system.ps1", "script-action": "dark-theme", "configurations": ["dark-theme-default"] },
+    { "id": "brave-browser", "name": "Brave Browser", "category": "web", "install-method": "winget", "package-id": "Brave.Brave", "configurations": ["brave-browser-default"] },
+    { "id": "rustdesk", "name": "RustDesk", "category": "web", "install-method": "winget", "package-id": "RustDesk.RustDesk", "configurations": ["rustdesk-default"] },
+    { "id": "oh-my-posh", "name": "OMP / Oh My Posh", "category": "artificial-intelligence", "install-method": "winget", "package-id": "JanDeDobbeleer.OhMyPosh", "configurations": ["oh-my-posh-default"] },
+    { "id": "codex-desktop", "name": "Codex Desktop", "category": "artificial-intelligence", "install-method": "winget", "package-id": "OpenAI.Codex", "configurations": ["codex-desktop-default"] },
+    { "id": "visual-studio-code", "name": "Visual Studio Code", "category": "editor", "install-method": "winget", "package-id": "Microsoft.VisualStudioCode", "configurations": ["visual-studio-code-default"] },
+    { "id": "libreoffice", "name": "LibreOffice", "category": "editor", "install-method": "winget", "package-id": "TheDocumentFoundation.LibreOffice", "configurations": ["libreoffice-default"] },
+    { "id": "himalaya", "name": "Himalaya", "category": "communication", "install-method": "winget", "package-id": "himalaya.himalaya", "configurations": ["himalaya-default"] },
+    { "id": "whatsapp", "name": "WhatsApp", "category": "communication", "install-method": "winget", "package-id": "9NKSQGP7F2NH", "package-source": "msstore", "configurations": ["whatsapp-default"] }
+  ]
+}

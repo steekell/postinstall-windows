@@ -1,0 +1,9 @@
+# Instructions et contenu local de développement
+AGENTS.md
+RULES.md
+personnal/
+
+# Fichiers PowerShell et outils locaux
+*.log
+.pester/
+*.user.json

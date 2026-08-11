@@ -1,0 +1,11 @@
+{
+  "schema-version": 1,
+  "id": "origine",
+  "name": "Origine",
+  "applications": [
+    { "id": "brave-browser", "config": "brave-browser-default" },
+    { "id": "visual-studio-code", "config": "visual-studio-code-default" },
+    { "id": "libreoffice", "config": "libreoffice-default" },
+    { "id": "whatsapp", "config": "whatsapp-default" }
+  ]
+}

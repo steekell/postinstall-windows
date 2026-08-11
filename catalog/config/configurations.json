@@ -1,0 +1,20 @@
+{
+  "schema-version": 1,
+  "configurations": [
+    { "id": "create-library-folders-default", "application-id": "create-library-folders", "config-version": "1.0.0", "name": "Dossiers de bibliothèque", "configuration-script": "src/scripts/configure-system.ps1", "script-action": "create-library-folders", "managed-paths": ["Y:\\library"] },
+    { "id": "hide-desktop-recycle-bin-default", "application-id": "hide-desktop-recycle-bin", "config-version": "1.0.0", "name": "Corbeille masquée", "configuration-script": "src/scripts/configure-system.ps1", "script-action": "hide-desktop-recycle-bin", "managed-paths": [], "managed-registry": ["HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\HideDesktopIcons\\NewStartPanel"] },
+    { "id": "align-desktop-icons-left-default", "application-id": "align-desktop-icons-left", "config-version": "1.0.0", "name": "Icônes alignées à gauche", "configuration-script": "src/scripts/configure-system.ps1", "script-action": "align-desktop-icons-left", "managed-paths": [], "managed-registry": ["HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced"] },
+    { "id": "hide-search-box-default", "application-id": "hide-search-box", "config-version": "1.0.0", "name": "Barre de recherche masquée", "configuration-script": "src/scripts/configure-system.ps1", "script-action": "hide-search-box", "managed-paths": [], "managed-registry": ["HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search"] },
+    { "id": "hide-task-view-default", "application-id": "hide-task-view", "config-version": "1.0.0", "name": "Vue des tâches masquée", "configuration-script": "src/scripts/configure-system.ps1", "script-action": "hide-task-view", "managed-paths": [], "managed-registry": ["HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced"] },
+    { "id": "context-menu-default", "application-id": "context-menu", "config-version": "1.0.0", "name": "Menu contextuel", "configuration-script": "src/scripts/configure-system.ps1", "script-action": "context-menu", "managed-paths": [], "managed-registry": ["HKCU:\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32"] },
+    { "id": "dark-theme-default", "application-id": "dark-theme", "config-version": "1.0.0", "name": "Thème sombre", "configuration-script": "src/scripts/configure-system.ps1", "script-action": "dark-theme", "managed-paths": [], "managed-registry": ["HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"] },
+    { "id": "brave-browser-default", "application-id": "brave-browser", "config-version": "1.0.0", "name": "Brave par défaut", "managed-paths": [] },
+    { "id": "rustdesk-default", "application-id": "rustdesk", "config-version": "1.0.0", "name": "RustDesk par défaut", "managed-paths": [] },
+    { "id": "oh-my-posh-default", "application-id": "oh-my-posh", "config-version": "1.0.0", "name": "OMP par défaut", "managed-paths": [] },
+    { "id": "codex-desktop-default", "application-id": "codex-desktop", "config-version": "1.0.0", "name": "Codex Desktop par défaut", "managed-paths": [] },
+    { "id": "visual-studio-code-default", "application-id": "visual-studio-code", "config-version": "1.0.0", "name": "VS Code par défaut", "managed-paths": [] },
+    { "id": "libreoffice-default", "application-id": "libreoffice", "config-version": "1.0.0", "name": "LibreOffice par défaut", "managed-paths": [] },
+    { "id": "himalaya-default", "application-id": "himalaya", "config-version": "1.0.0", "name": "Himalaya par défaut", "managed-paths": [] },
+    { "id": "whatsapp-default", "application-id": "whatsapp", "config-version": "1.0.0", "name": "WhatsApp par défaut", "managed-paths": [] }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema-version": 1,
+  "id": "steekell",
+  "name": "Steekell",
+  "applications": [
+    { "id": "create-library-folders", "config": "create-library-folders-default" },
+    { "id": "dark-theme", "config": "dark-theme-default" },
+    { "id": "brave-browser", "config": "brave-browser-default" },
+    { "id": "rustdesk", "config": "rustdesk-default" },
+    { "id": "oh-my-posh", "config": "oh-my-posh-default" },
+    { "id": "codex-desktop", "config": "codex-desktop-default" },
+    { "id": "visual-studio-code", "config": "visual-studio-code-default" },
+    { "id": "libreoffice", "config": "libreoffice-default" },
+    { "id": "himalaya", "config": "himalaya-default" },
+    { "id": "whatsapp", "config": "whatsapp-default" }
+  ]
+}
