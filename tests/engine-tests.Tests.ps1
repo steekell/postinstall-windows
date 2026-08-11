@@ -58,4 +58,38 @@ param(
             if (Test-Path -LiteralPath $manifestPath) { Remove-Item -LiteralPath $manifestPath -Force }
         }
     }
+
+    It 'ne mélange pas la sortie du script avec les résultats du plan' {
+        $manifestPath = Join-Path ([IO.Path]::GetTempPath()) "postinstall-$([guid]::NewGuid().ToString('N')).json"
+        $scriptPath = Join-Path $TestDrive 'writes-output.ps1'
+        @'
+param(
+    [Parameter(Mandatory)][string]$Action,
+    [Parameter(Mandatory)][string]$ApplicationId
+)
+[pscustomobject]@{ output = 'diagnostic' }
+'@ | Set-Content -LiteralPath $scriptPath -Encoding UTF8
+
+        $application = [pscustomobject]@{
+            id = 'test-application'
+            'install-method' = 'script'
+            script = 'writes-output.ps1'
+            'script-action' = 'test'
+        }
+        $plan = @([pscustomobject]@{
+            Application = $application
+            ConfigId = $null
+            Operation = 'install'
+        })
+        $catalog = [pscustomobject]@{ Applications = @($application); Configurations = @() }
+
+        try {
+            $results = Invoke-PostinstallPlan -Plan $plan -Catalog $catalog -RootPath $TestDrive -ManifestPath $manifestPath
+            @($results).Count | Should -Be 1
+            $results[0].result | Should -Be 'success'
+        }
+        finally {
+            if (Test-Path -LiteralPath $manifestPath) { Remove-Item -LiteralPath $manifestPath -Force }
+        }
+    }
 }

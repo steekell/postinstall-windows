@@ -25,8 +25,13 @@ function Invoke-WingetAction {
     $arguments = @($Action, '--id', $PackageId, '--exact', '--accept-source-agreements', '--disable-interactivity')
     if ($Action -ne 'uninstall') { $arguments += '--accept-package-agreements' }
     if (-not [string]::IsNullOrWhiteSpace($Source)) { $arguments += @('--source', $Source) }
-    & winget @arguments
-    if ($LASTEXITCODE -ne 0) { throw "WinGet a échoué ($LASTEXITCODE) pour '$PackageId'." }
+    # Ne pas laisser la sortie native remonter dans Invoke-PostinstallPlan :
+    # cette fonction doit émettre uniquement son résultat logique (ou une
+    # exception), sinon le rapport final reçoit des chaînes WinGet.
+    $wingetOutput = & winget @arguments 2>&1
+    $wingetExitCode = $LASTEXITCODE
+    $wingetOutput | ForEach-Object { Write-Host $_ }
+    if ($wingetExitCode -ne 0) { throw "WinGet a échoué ($wingetExitCode) pour '$PackageId'." }
 }
 
 Export-ModuleMember -Function Test-WingetAvailable, Test-WingetPackageInstalled, Invoke-WingetAction

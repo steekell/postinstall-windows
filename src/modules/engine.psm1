@@ -27,8 +27,13 @@ function Invoke-PostinstallScript {
         ApplicationId = $ApplicationId
     }
     if (-not [string]::IsNullOrWhiteSpace($SettingId)) { $parameters.SettingId = $SettingId }
-    & $scriptPath @parameters
-    if (-not $?) { throw "Le script '$RelativePath' a échoué." }
+    # Les scripts peuvent écrire un résultat PowerShell dans le pipeline.
+    # L'afficher sans le propager évite de polluer la collection des
+    # opérations renvoyées par Invoke-PostinstallPlan.
+    $scriptOutput = & $scriptPath @parameters 2>&1
+    $scriptSucceeded = $?
+    $scriptOutput | ForEach-Object { Write-Host $_ }
+    if (-not $scriptSucceeded) { throw "Le script '$RelativePath' a échoué." }
 }
 
 function Invoke-ConfigurationBackups {
