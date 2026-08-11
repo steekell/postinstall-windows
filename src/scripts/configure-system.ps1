@@ -11,8 +11,19 @@ $enabled = $Action -ne 'uninstall'
 
 function Set-RegistryDword {
     param([string]$Path, [string]$Name, [int]$Value)
-    New-Item -Path $Path -Force | Out-Null
-    New-ItemProperty -Path $Path -Name $Name -PropertyType DWord -Value $Value -Force | Out-Null
+    if (-not (Test-Path -LiteralPath $Path)) {
+        New-Item -Path $Path -Force | Out-Null
+    }
+
+    $currentValue = Get-ItemPropertyValue -LiteralPath $Path -Name $Name -ErrorAction SilentlyContinue
+    if ($null -ne $currentValue -and [int]$currentValue -eq $Value) { return }
+
+    if ($null -eq $currentValue) {
+        New-ItemProperty -LiteralPath $Path -Name $Name -PropertyType DWord -Value $Value -Force | Out-Null
+    }
+    else {
+        Set-ItemProperty -LiteralPath $Path -Name $Name -Value $Value -Force
+    }
 }
 
 switch ($SettingId) {
@@ -25,8 +36,8 @@ switch ($SettingId) {
         $path = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel'
         Set-RegistryDword -Path $path -Name '{645FF040-5081-101B-9F08-00AA002F954E}' -Value ([int]$enabled)
     }
-    'align-desktop-icons-left' {
-        throw 'L''alignement des icônes du bureau n''est pas encore implémenté.'
+    'align-taskbar-icons-left' {
+        Set-RegistryDword -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'TaskbarAl' -Value $(if ($enabled) { 0 } else { 1 })
     }
     'hide-search-box' {
         Set-RegistryDword -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Value $(if ($enabled) { 0 } else { 2 })

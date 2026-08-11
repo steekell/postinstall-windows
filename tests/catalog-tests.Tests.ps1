@@ -10,5 +10,7 @@ Describe 'Catalogue Postinstall Windows' {
         @($catalog.Applications).Count | Should -BeGreaterThan 0
         @($catalog.Configurations).Count | Should -BeGreaterThan 0
         @($catalog.Configurations | Where-Object { [string]::IsNullOrWhiteSpace($_.'config-version') }).Count | Should -Be 0
+        @($catalog.Applications | Where-Object { $_.id -eq 'align-taskbar-icons-left' }).Count | Should -Be 1
+        @($catalog.Applications | Where-Object { $_.id -eq 'align-desktop-icons-left' }).Count | Should -Be 0
     }
 }

@@ -5,9 +5,9 @@
         $manifestModule = Get-Content -LiteralPath (Join-Path $rootPath 'src/modules/manifest.psm1') -Raw
         $readme = Get-Content -LiteralPath (Join-Path $rootPath 'README.md') -Raw
 
-        $bootstrap | Should -Match '\$version = ''v0\.1\.3'''
-        $manifestModule | Should -Match "'tool-version' = '0\.1\.3'"
-        $readme | Should -Match '/v0\.1\.3/setup-postinstall-windows\.ps1'
+        $bootstrap | Should -Match '\$version = ''v0\.1\.4'''
+        $manifestModule | Should -Match "'tool-version' = '0\.1\.4'"
+        $readme | Should -Match '/v0\.1\.4/setup-postinstall-windows\.ps1'
         $readme | Should -Not -Match '/v0\.1\.0/setup-postinstall-windows\.ps1'
     }
 }
