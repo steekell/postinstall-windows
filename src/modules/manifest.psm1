@@ -100,7 +100,9 @@ function Add-PostinstallOperation {
     )
 
     $Manifest.operations = @($Manifest.operations) + $Operation
-    $current = @($Manifest.applications | Where-Object { $_.'application-id' -eq $Operation.'application-id' })[0]
+    $current = $Manifest.applications |
+        Where-Object { $_.'application-id' -eq $Operation.'application-id' } |
+        Select-Object -First 1
     if ($null -eq $current) {
         $current = [pscustomobject]@{
             'application-id' = $Operation.'application-id'

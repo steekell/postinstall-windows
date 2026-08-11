@@ -1,4 +1,4 @@
-Describe 'Bootstrap versionné' {
+﻿Describe 'Bootstrap versionné' {
     It 'utilise la version publiée dans le script, le manifeste et le README' {
         $rootPath = Join-Path $PSScriptRoot '..'
         $bootstrap = Get-Content -LiteralPath (Join-Path $rootPath 'setup-postinstall-windows.ps1') -Raw

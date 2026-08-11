@@ -32,3 +32,25 @@ Describe 'Configuration backups' {
         @($first.'backup-path', $second.'backup-path') | ForEach-Object { Test-Path -LiteralPath $_ -PathType Leaf | Should -BeTrue }
     }
 }
+
+Describe 'Mise à jour du manifeste' {
+    It 'ajoute une première application à un manifeste vide' {
+        $manifest = [pscustomobject]@{
+            applications = @()
+            operations = @()
+        }
+        $operation = [pscustomobject]@{
+            operation = 'install'
+            'application-id' = 'test-application'
+            'configuration-id' = $null
+            'config-version' = $null
+            result = 'success'
+            backups = @()
+        }
+
+        { Add-PostinstallOperation -Manifest $manifest -Operation $operation } | Should -Not -Throw
+        @($manifest.applications).Count | Should -Be 1
+        $manifest.applications[0].'application-id' | Should -Be 'test-application'
+        $manifest.applications[0].installed | Should -BeTrue
+    }
+}

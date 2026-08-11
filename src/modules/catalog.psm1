@@ -82,12 +82,16 @@ function Import-PostinstallProfiles {
 
 function Get-PostinstallApplication {
     param([Parameter(Mandatory)]$Catalog, [Parameter(Mandatory)][string]$Id)
-    return @($Catalog.Applications | Where-Object { $_.id -eq $Id })[0]
+    return $Catalog.Applications |
+        Where-Object { $_.id -eq $Id } |
+        Select-Object -First 1
 }
 
 function Get-PostinstallConfiguration {
     param([Parameter(Mandatory)]$Catalog, [Parameter(Mandatory)][string]$Id)
-    return @($Catalog.Configurations | Where-Object { $_.id -eq $Id })[0]
+    return $Catalog.Configurations |
+        Where-Object { $_.id -eq $Id } |
+        Select-Object -First 1
 }
 
 Export-ModuleMember -Function Import-PostinstallCatalog, Import-PostinstallProfiles, Get-PostinstallApplication, Get-PostinstallConfiguration

@@ -1,4 +1,4 @@
-BeforeAll {
+﻿BeforeAll {
     $manifestModulePath = Join-Path $PSScriptRoot '..\src\modules\manifest.psm1'
     $catalogModulePath = Join-Path $PSScriptRoot '..\src\modules\catalog.psm1'
     $engineModulePath = Join-Path $PSScriptRoot '..\src\modules\engine.psm1'
