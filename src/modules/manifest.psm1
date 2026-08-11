@@ -20,7 +20,7 @@ function Get-PostinstallManifest {
 
     return [pscustomobject]@{
         'schema-version' = 1
-        'tool-version' = '0.1.5'
+        'tool-version' = '0.1.6'
         applications = @()
         operations = @()
     }

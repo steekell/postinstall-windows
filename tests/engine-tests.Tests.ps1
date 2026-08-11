@@ -65,7 +65,8 @@ param(
         @'
 param(
     [Parameter(Mandatory)][string]$Action,
-    [Parameter(Mandatory)][string]$ApplicationId
+    [Parameter(Mandatory)][string]$ApplicationId,
+    [string]$SettingId
 )
 [pscustomobject]@{ output = 'diagnostic' }
 '@ | Set-Content -LiteralPath $scriptPath -Encoding UTF8
