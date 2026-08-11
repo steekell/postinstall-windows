@@ -136,7 +136,7 @@ function Show-PostinstallSummary {
         Write-Host "- $($item.Operation) : $($item.Application.name) [$configuration]"
     }
     Write-Host ''
-    Write-Host 'Confirmer l’exécution ? [o/N]' -ForegroundColor Yellow
+    Write-Host 'Confirmer l''exécution ? [o/N]' -ForegroundColor Yellow
     $key = [Console]::ReadKey($true)
     return $key.KeyChar -in @('o', 'O', 'y', 'Y')
 }
