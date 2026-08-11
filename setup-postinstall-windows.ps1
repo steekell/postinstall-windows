@@ -5,7 +5,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 $repository = 'steekell/postinstall-windows'
-$version = 'v0.1.2'
+$version = 'v0.1.3'
 $archiveUrl = "https://github.com/$repository/archive/refs/tags/$version.zip"
 $temporaryRoot = Join-Path ([IO.Path]::GetTempPath()) "postinstall-windows-$version-$([guid]::NewGuid().ToString('N'))"
 $archivePath = Join-Path ([IO.Path]::GetTempPath()) "postinstall-windows-$version-$([guid]::NewGuid().ToString('N')).zip"

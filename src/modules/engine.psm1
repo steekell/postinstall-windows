@@ -22,9 +22,12 @@ function Invoke-PostinstallScript {
 
     $scriptPath = Join-Path $RootPath $RelativePath
     if (-not (Test-Path -LiteralPath $scriptPath -PathType Leaf)) { throw "Script introuvable : $scriptPath" }
-    $arguments = @('-Action', $Action, '-ApplicationId', $ApplicationId)
-    if (-not [string]::IsNullOrWhiteSpace($SettingId)) { $arguments += @('-SettingId', $SettingId) }
-    & $scriptPath @arguments
+    $parameters = @{
+        Action = $Action
+        ApplicationId = $ApplicationId
+    }
+    if (-not [string]::IsNullOrWhiteSpace($SettingId)) { $parameters.SettingId = $SettingId }
+    & $scriptPath @parameters
     if (-not $?) { throw "Le script '$RelativePath' a échoué." }
 }
 

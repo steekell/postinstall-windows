@@ -8,6 +8,32 @@
 }
 
 Describe 'Moteur postinstallation' {
+    It 'transmet les paramètres nommés au script applicatif' {
+        InModuleScope engine {
+            $scriptPath = Join-Path $TestDrive 'capture-parameters.ps1'
+            $resultPath = Join-Path $TestDrive 'received-parameters.json'
+            @'
+param(
+    [Parameter(Mandatory)][ValidateSet('install', 'update', 'uninstall')][string]$Action,
+    [Parameter(Mandatory)][string]$ApplicationId,
+    [Parameter(Mandatory)][string]$SettingId
+)
+[pscustomobject]@{
+    Action = $Action
+    ApplicationId = $ApplicationId
+    SettingId = $SettingId
+} | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $PSScriptRoot 'received-parameters.json') -Encoding UTF8
+'@ | Set-Content -LiteralPath $scriptPath -Encoding UTF8
+
+            Invoke-PostinstallScript -RootPath $TestDrive -RelativePath 'capture-parameters.ps1' -Action install -ApplicationId 'test-application' -SettingId 'test-setting'
+
+            $received = Get-Content -LiteralPath $resultPath -Raw | ConvertFrom-Json
+            $received.Action | Should -Be 'install'
+            $received.ApplicationId | Should -Be 'test-application'
+            $received.SettingId | Should -Be 'test-setting'
+        }
+    }
+
     It 'accepte une application absente du manifeste lors du premier passage' {
         $manifestPath = Join-Path ([IO.Path]::GetTempPath()) "postinstall-$([guid]::NewGuid().ToString('N')).json"
         $application = [pscustomobject]@{
