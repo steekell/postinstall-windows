@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [Parameter(Mandatory)][ValidateSet('install', 'update', 'uninstall')][string]$Action,
     [Parameter(Mandatory)][string]$ApplicationId,
@@ -26,7 +26,7 @@ switch ($SettingId) {
         Set-RegistryDword -Path $path -Name '{645FF040-5081-101B-9F08-00AA002F954E}' -Value ([int]$enabled)
     }
     'align-desktop-icons-left' {
-        throw 'L’alignement des icônes du bureau n’est pas encore implémenté.'
+        throw 'L''alignement des icônes du bureau n''est pas encore implémenté.'
     }
     'hide-search-box' {
         Set-RegistryDword -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Value $(if ($enabled) { 0 } else { 2 })

@@ -1,4 +1,4 @@
-BeforeAll {
+﻿BeforeAll {
     $modulePath = Join-Path $PSScriptRoot '..\src\modules\catalog.psm1'
     Import-Module $modulePath -Force
 }

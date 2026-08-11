@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param([string]$ManifestPath)
 
 Set-StrictMode -Version Latest

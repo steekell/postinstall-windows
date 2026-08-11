@@ -1,4 +1,4 @@
-Set-StrictMode -Version Latest
+﻿Set-StrictMode -Version Latest
 
 function Test-WingetAvailable {
     return $null -ne (Get-Command winget -ErrorAction SilentlyContinue)

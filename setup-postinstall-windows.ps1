@@ -12,19 +12,19 @@ $archivePath = Join-Path ([IO.Path]::GetTempPath()) "postinstall-windows-$versio
 
 try {
     New-Item -ItemType Directory -Path $temporaryRoot -Force | Out-Null
-    Write-Host "Téléchargement de Postinstall Windows $version..."
+    Write-Host "Telechargement de Postinstall Windows $version..."
     Invoke-WebRequest -Uri $archiveUrl -OutFile $archivePath -UseBasicParsing
     Expand-Archive -LiteralPath $archivePath -DestinationPath $temporaryRoot -Force
 
     $projectRoot = @(Get-ChildItem -LiteralPath $temporaryRoot -Directory)[0].FullName
     $entryPoint = Join-Path $projectRoot 'setup-postinstall.ps1'
     if (-not (Test-Path -LiteralPath $entryPoint -PathType Leaf)) {
-        throw "Point d'entrée absent dans l'archive $version."
+        throw "Point d'entree absent dans l'archive $version."
     }
 
     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
     & $entryPoint
-    if (-not $?) { throw "L'installation Postinstall Windows $version a échoué." }
+    if (-not $?) { throw "L'installation Postinstall Windows $version a echoue." }
 }
 finally {
     if (Test-Path -LiteralPath $archivePath) { Remove-Item -LiteralPath $archivePath -Force -ErrorAction SilentlyContinue }

@@ -1,4 +1,4 @@
-Set-StrictMode -Version Latest
+﻿Set-StrictMode -Version Latest
 
 $script:CategoryNames = @{
     system = 'Système'
@@ -136,7 +136,7 @@ function Show-PostinstallSummary {
         Write-Host "- $($item.Operation) : $($item.Application.name) [$configuration]"
     }
     Write-Host ''
-    Write-Host 'Confirmer l’exécution ? [o/N]' -ForegroundColor Yellow
+    Write-Host 'Confirmer l''exécution ? [o/N]' -ForegroundColor Yellow
     $key = [Console]::ReadKey($true)
     return $key.KeyChar -in @('o', 'O', 'y', 'Y')
 }
@@ -152,7 +152,15 @@ function Get-PostinstallPlanFromTui {
     )
     if ($null -eq $operation) { return $null }
 
-    $profile = Read-PostinstallMenu -Title 'Postinstall Windows - profil' -Items @($Profiles | ForEach-Object { [pscustomobject]@{ name = $_.name; value = $_ } })
+    $profileItems = @(
+        $Profiles | ForEach-Object {
+            [pscustomobject]@{
+                name = $_.name
+                value = $_
+            }
+        }
+    )
+    $profile = Read-PostinstallMenu -Title 'Postinstall Windows - profil' -Items $profileItems
     if ($null -eq $profile) { return $null }
     $profileValue = $profile.value
 

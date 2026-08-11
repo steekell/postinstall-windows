@@ -1,4 +1,4 @@
-Set-StrictMode -Version Latest
+﻿Set-StrictMode -Version Latest
 
 function Get-ManifestApplication {
     param([Parameter(Mandatory)]$Manifest, [Parameter(Mandatory)][string]$ApplicationId)
