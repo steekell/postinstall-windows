@@ -31,7 +31,7 @@ Describe 'Configuration système' {
         }
     }
 
-    It 'crée les valeurs de barre des tâches lorsqu’elles sont absentes' {
+    It 'crée les valeurs de barre des tâches lorsque les valeurs sont absentes' {
         Mock Get-ItemProperty { [pscustomobject]@{} }
 
         & $scriptPath -Action install -ApplicationId 'align-taskbar-icons-left' -SettingId 'align-taskbar-icons-left'
