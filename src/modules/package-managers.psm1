@@ -6,10 +6,13 @@ function Test-WingetAvailable {
 
 function Test-WingetPackageInstalled {
     [CmdletBinding()]
-    param([Parameter(Mandatory)][string]$PackageId)
+    param(
+        [Parameter(Mandatory)][string]$PackageId,
+        [Parameter(Mandatory)][string]$Source
+    )
 
     if (-not (Test-WingetAvailable)) { return $false }
-    $output = & winget list --id $PackageId --exact --accept-source-agreements --disable-interactivity 2>&1
+    $output = & winget list --id $PackageId --exact --source $Source --accept-source-agreements --disable-interactivity 2>&1
     return ($LASTEXITCODE -eq 0 -and (@($output) -join "`n") -match [regex]::Escape($PackageId))
 }
 

@@ -101,9 +101,9 @@ function Invoke-PostinstallPlan {
             }
 
             if ($application.'install-method' -eq 'winget') {
-                $packageSource = $null
+                $packageSource = 'winget'
                 if ($application.PSObject.Properties.Name -contains 'package-source') { $packageSource = $application.'package-source' }
-                $installed = Test-WingetPackageInstalled -PackageId $application.'package-id'
+                $installed = Test-WingetPackageInstalled -PackageId $application.'package-id' -Source $packageSource
                 if ($selection.Operation -eq 'install' -and -not $installed) {
                     Invoke-WingetAction -Action install -PackageId $application.'package-id' -Source $packageSource
                 }
