@@ -1,4 +1,4 @@
-Set-StrictMode -Version Latest
+﻿Set-StrictMode -Version Latest
 
 $script:CategoryNames = @{
     system = 'Système'
@@ -152,7 +152,15 @@ function Get-PostinstallPlanFromTui {
     )
     if ($null -eq $operation) { return $null }
 
-    $profile = Read-PostinstallMenu -Title 'Postinstall Windows - profil' -Items @($Profiles | ForEach-Object { [pscustomobject]@{ name = $_.name; value = $_ } })
+    $profileItems = @(
+        $Profiles | ForEach-Object {
+            [pscustomobject]@{
+                name = $_.name
+                value = $_
+            }
+        }
+    )
+    $profile = Read-PostinstallMenu -Title 'Postinstall Windows - profil' -Items $profileItems
     if ($null -eq $profile) { return $null }
     $profileValue = $profile.value
 

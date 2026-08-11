@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [Parameter(Mandatory)][ValidateSet('install', 'update', 'uninstall')][string]$Action,
     [Parameter(Mandatory)][string]$ApplicationId,
