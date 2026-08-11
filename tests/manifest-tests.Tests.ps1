@@ -32,3 +32,24 @@ Describe 'Configuration backups' {
         @($first.'backup-path', $second.'backup-path') | ForEach-Object { Test-Path -LiteralPath $_ -PathType Leaf | Should -BeTrue }
     }
 }
+
+Describe 'Manifest applications' {
+    It 'ajoute une application absente sans erreur d index' {
+        $manifest = [pscustomobject]@{
+            applications = @()
+            operations = @()
+        }
+        $operation = [pscustomobject]@{
+            'application-id' = 'library-folders'
+            operation = 'install'
+            result = 'success'
+            'configuration-id' = $null
+            'config-version' = $null
+            backups = @()
+        }
+
+        { Add-PostinstallOperation -Manifest $manifest -Operation $operation } | Should -Not -Throw
+        @($manifest.applications).Count | Should -Be 1
+        $manifest.applications[0].'application-id' | Should -Be 'library-folders'
+    }
+}

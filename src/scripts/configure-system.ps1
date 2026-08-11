@@ -17,7 +17,14 @@ function Set-RegistryDword {
 
 switch ($SettingId) {
     'create-library-folders' {
-        $folders = @('Y:\library', 'Y:\library\downloads', 'Y:\library\documents', 'Y:\library\pictures', 'Y:\library\videos')
+        $folders = @(
+            'Y:\library',
+            'Y:\library\downloads',
+            'Y:\library\documents',
+            'Y:\library\pictures',
+            'Y:\library\music',
+            'Y:\library\videos'
+        )
         if ($enabled) { $folders | ForEach-Object { New-Item -ItemType Directory -Path $_ -Force | Out-Null } }
         else { Write-Verbose 'Les dossiers de bibliothèque sont conservés lors de la désinstallation.' }
     }

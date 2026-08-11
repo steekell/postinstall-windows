@@ -50,7 +50,7 @@ Un profil préremplit la sélection des applications et, pour chaque application
 Les applications sont regroupées ainsi :
 
 1. **Système**
-   - créer les dossiers de bibliothèque (`Y:\library\downloads`, etc.) ;
+   - créer les dossiers de bibliothèque (`Y:\library\downloads`, `Y:\library\documents`, `Y:\library\pictures`, `Y:\library\music`, `Y:\library\videos`) ;
    - supprimer l’icône de la corbeille du bureau ;
    - placer les icônes à gauche ;
    - masquer la barre de recherche ;

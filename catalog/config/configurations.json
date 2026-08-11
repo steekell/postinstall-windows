@@ -1,7 +1,7 @@
 {
   "schema-version": 1,
   "configurations": [
-    { "id": "create-library-folders-default", "application-id": "create-library-folders", "config-version": "1.0.0", "name": "Dossiers de bibliothèque", "configuration-script": "src/scripts/configure-system.ps1", "script-action": "create-library-folders", "managed-paths": ["Y:\\library"] },
+    { "id": "create-library-folders-default", "application-id": "create-library-folders", "config-version": "1.1.0", "name": "Dossiers de bibliothèque", "configuration-script": "src/scripts/configure-system.ps1", "script-action": "create-library-folders", "managed-paths": ["Y:\\library"] },
     { "id": "hide-desktop-recycle-bin-default", "application-id": "hide-desktop-recycle-bin", "config-version": "1.0.0", "name": "Corbeille masquée", "configuration-script": "src/scripts/configure-system.ps1", "script-action": "hide-desktop-recycle-bin", "managed-paths": [], "managed-registry": ["HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\HideDesktopIcons\\NewStartPanel"] },
     { "id": "align-desktop-icons-left-default", "application-id": "align-desktop-icons-left", "config-version": "1.0.0", "name": "Icônes alignées à gauche", "configuration-script": "src/scripts/configure-system.ps1", "script-action": "align-desktop-icons-left", "managed-paths": [], "managed-registry": ["HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced"] },
     { "id": "hide-search-box-default", "application-id": "hide-search-box", "config-version": "1.0.0", "name": "Barre de recherche masquée", "configuration-script": "src/scripts/configure-system.ps1", "script-action": "hide-search-box", "managed-paths": [], "managed-registry": ["HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search"] },

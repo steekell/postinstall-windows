@@ -2,7 +2,9 @@
 
 function Get-ManifestApplication {
     param([Parameter(Mandatory)]$Manifest, [Parameter(Mandatory)][string]$ApplicationId)
-    return @($Manifest.applications | Where-Object { $_.'application-id' -eq $ApplicationId })[0]
+    return $Manifest.applications |
+        Where-Object { $_.'application-id' -eq $ApplicationId } |
+        Select-Object -First 1
 }
 
 function Invoke-PostinstallScript {
