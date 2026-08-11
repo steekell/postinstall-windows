@@ -15,15 +15,12 @@ function Set-RegistryDword {
         New-Item -Path $Path -Force | Out-Null
     }
 
-    $currentValue = Get-ItemPropertyValue -LiteralPath $Path -Name $Name -ErrorAction SilentlyContinue
+    $registryItem = Get-ItemProperty -LiteralPath $Path
+    $property = $registryItem.PSObject.Properties[$Name]
+    $currentValue = if ($null -eq $property) { $null } else { $property.Value }
     if ($null -ne $currentValue -and [int]$currentValue -eq $Value) { return }
 
-    if ($null -eq $currentValue) {
-        New-ItemProperty -LiteralPath $Path -Name $Name -PropertyType DWord -Value $Value -Force | Out-Null
-    }
-    else {
-        Set-ItemProperty -LiteralPath $Path -Name $Name -Value $Value -Force
-    }
+    New-ItemProperty -LiteralPath $Path -Name $Name -PropertyType DWord -Value $Value -Force | Out-Null
 }
 
 switch ($SettingId) {
