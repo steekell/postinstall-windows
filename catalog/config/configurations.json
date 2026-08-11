@@ -10,7 +10,7 @@
     { "id": "dark-theme-default", "application-id": "dark-theme", "config-version": "1.0.0", "name": "Thème sombre", "configuration-script": "src/scripts/configure-system.ps1", "script-action": "dark-theme", "managed-paths": [], "managed-registry": ["HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"] },
     { "id": "brave-browser-default", "application-id": "brave-browser", "config-version": "1.0.0", "name": "Brave par défaut", "managed-paths": [] },
     { "id": "rustdesk-default", "application-id": "rustdesk", "config-version": "1.0.0", "name": "RustDesk par défaut", "managed-paths": [] },
-    { "id": "oh-my-posh-default", "application-id": "oh-my-posh", "config-version": "1.0.0", "name": "OMP par défaut", "managed-paths": [] },
+    { "id": "oh-my-pi-default", "application-id": "oh-my-pi", "config-version": "1.0.0", "name": "Oh My Pie par défaut", "managed-paths": [] },
     { "id": "codex-desktop-default", "application-id": "codex-desktop", "config-version": "1.0.0", "name": "Codex Desktop par défaut", "managed-paths": [] },
     { "id": "visual-studio-code-default", "application-id": "visual-studio-code", "config-version": "1.0.0", "name": "VS Code par défaut", "managed-paths": [] },
     { "id": "libreoffice-default", "application-id": "libreoffice", "config-version": "1.0.0", "name": "LibreOffice par défaut", "managed-paths": [] },

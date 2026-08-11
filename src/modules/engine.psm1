@@ -2,7 +2,12 @@ Set-StrictMode -Version Latest
 
 function Get-ManifestApplication {
     param([Parameter(Mandatory)]$Manifest, [Parameter(Mandatory)][string]$ApplicationId)
-    return @($Manifest.applications | Where-Object { $_.'application-id' -eq $ApplicationId })[0]
+    # Une application absente du manifeste est normale lors de la première
+    # exécution. Ne jamais indexer directement un tableau vide sous
+    # StrictMode : cela provoque une IndexOutOfRangeException.
+    return $Manifest.applications |
+        Where-Object { $_.'application-id' -eq $ApplicationId } |
+        Select-Object -First 1
 }
 
 function Invoke-PostinstallScript {

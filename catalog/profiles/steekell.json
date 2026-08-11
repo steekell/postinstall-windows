@@ -7,7 +7,7 @@
     { "id": "dark-theme", "config": "dark-theme-default" },
     { "id": "brave-browser", "config": "brave-browser-default" },
     { "id": "rustdesk", "config": "rustdesk-default" },
-    { "id": "oh-my-posh", "config": "oh-my-posh-default" },
+    { "id": "oh-my-pi", "config": "oh-my-pi-default" },
     { "id": "codex-desktop", "config": "codex-desktop-default" },
     { "id": "visual-studio-code", "config": "visual-studio-code-default" },
     { "id": "libreoffice", "config": "libreoffice-default" },
