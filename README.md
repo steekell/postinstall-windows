@@ -86,30 +86,30 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 Une version publiée peut être lancée en une seule commande depuis PowerShell grâce au bootstrap versionné :
 
 ```powershell
-irm https://raw.githubusercontent.com/steekell/postinstall-windows/v0.1.0/setup-postinstall-windows.ps1 | iex
+irm https://raw.githubusercontent.com/steekell/postinstall-windows/v0.1.2/setup-postinstall-windows.ps1 | iex
 ```
 
-Le bootstrap télécharge l’archive du tag `v0.1.0` dans un répertoire temporaire, exécute `setup-postinstall.ps1` avec son catalogue et ses modules, puis supprime les fichiers temporaires. Pour une version différente, le tag et la valeur `$version` du bootstrap doivent correspondre.
+Le bootstrap télécharge l’archive du tag `v0.1.2` dans un répertoire temporaire, exécute `setup-postinstall.ps1` avec son catalogue et ses modules, puis supprime les fichiers temporaires. Pour une version différente, le tag et la valeur `$version` du bootstrap doivent correspondre.
 
 Cette forme est pratique mais exécute directement du code récupéré sur Internet. Pour une utilisation sensible, télécharger et contrôler le script ou l’archive avant exécution, puis lancer le fichier localement :
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/steekell/postinstall-windows/v0.1.0/setup-postinstall-windows.ps1 -OutFile .\setup-postinstall-windows.ps1
+Invoke-WebRequest https://raw.githubusercontent.com/steekell/postinstall-windows/v0.1.2/setup-postinstall-windows.ps1 -OutFile .\setup-postinstall-windows.ps1
 Get-FileHash .\setup-postinstall-windows.ps1 -Algorithm SHA256
 .\setup-postinstall-windows.ps1
 ```
 
 Chaque version publique doit être créée par un tag Git immuable et publier une somme SHA-256 de l’archive. Le bootstrap devra être mis à jour avec le nouveau numéro avant chaque release.
 
-Pour rendre `v0.1.0` disponible, le dépôt GitHub `steekell/postinstall-windows` doit être public et le tag doit être poussé :
+Pour rendre `v0.1.2` disponible, le dépôt GitHub `steekell/postinstall-windows` doit être public et le tag doit être poussé :
 
 ```bash
 git remote add origin https://github.com/steekell/postinstall-windows.git
 git push -u origin main
-git push origin v0.1.0
+git push origin v0.1.2
 ```
 
-GitHub générera alors automatiquement l’archive `https://github.com/steekell/postinstall-windows/archive/refs/tags/v0.1.0.zip` utilisée par le bootstrap.
+GitHub générera alors automatiquement l’archive `https://github.com/steekell/postinstall-windows/archive/refs/tags/v0.1.2.zip` utilisée par le bootstrap.
 
 Prérequis : Windows 10/11, PowerShell 5.1 minimum (PowerShell 7 recommandé), WinGet/App Installer disponible et accès réseau lorsque nécessaire. Le script doit détecter les prérequis, expliquer les droits administrateur requis et ne jamais modifier durablement la politique d’exécution.
 
